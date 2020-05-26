@@ -20,19 +20,22 @@
   rabbitmq_plugin:
     names: rabbitmq_management
     state: enabled
+  notify:
+    - restart rabbitmq
   tags: 
   - deploy
 
 - name: Add rabbitmq users admin
   rabbitmq_user:
-    user: username
-    password: password
+    user: "{{ item.username }}"
+    password: "{{ item.username }}"
     vhost: /
     configure_priv: .*
     read_priv: .*
     write_priv: .*
     state: present
-  
+  with_items:
+  - { username: "{{username}}", password: "{{userpassword}}"}
   tags: 
   - deploy
   - new-user
