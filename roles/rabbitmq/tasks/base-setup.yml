@@ -4,8 +4,8 @@
     dest: /tmp/erlang.rpm      
 - name: Rpm add Erlang
   yum:
-   install: "/tmp/erlang.rpm"
-  
+   name: /tmp/erlang.rpm 
+   state: present
 
 - name: Base setup
   package: 
