@@ -1,10 +1,10 @@
 - name: Download Erlang rpm
   get_url:
     url: http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
-    dest: /tmp/erlang.rpm      
-- name: Rpm add Erlang
+    dest: erlang.rpm      
+- name: Install Erlang
   yum:
-   name: /tmp/erlang.rpm 
+   name: erlang.rpm 
    state: present
 
 - name: Base setup
