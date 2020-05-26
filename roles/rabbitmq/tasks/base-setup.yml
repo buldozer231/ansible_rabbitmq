@@ -1,0 +1,32 @@
+- name: Download Erlang rpm
+  get_url:
+    url: http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+    dest: /tmp/erlang.rpm      
+  shell: rpm -Uvh /tmp/erlang.rpm
+
+- name: Base setup
+  package: 
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - apt-transport-https
+  - vim
+  - curl
+  - whois
+  - telnet 
+  - smartmontools
+  - htop
+  - bash-completion 
+  - git
+  - strace
+  - screen
+  - ntpdate 
+  - software-properties-common
+  - bzip2
+  - net-tools
+  - sudo
+  - ntp
+  - erlang
+  - epel-release
+
+  

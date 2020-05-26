@@ -1,0 +1,6 @@
+- import_tasks: base-setup.yml
+  tags:
+  - deploy
+- import_tasks: rabbitmq.yml
+  tags:
+  - deploy

@@ -1,0 +1,60 @@
+
+- name: Add rabbit repo
+  shell: wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.1/rabbitmq-server-3.6.1-1.noarch.rpm
+  tags: 
+  - deploy
+
+- name: Add trusted key
+  shell: rpm --import https://www.rabbitmq.com/rabbitmq-signing-key-public.asc
+  tags: 
+  - deploy
+
+- name: Install rabbitmq
+  shell: yum install rabbitmq-server-3.6.1-1.noarch.rpm
+  tags: 
+  - deploy
+
+- name: Enable rabbitmq plugins
+  rabbitmq_plugin:
+    names: rabbitmq_management
+    state: enabled
+  notify:
+    - restart rabbitmq
+  tags: 
+  - deploy
+
+- name: Add rabbitmq users admin
+  rabbitmq_user:
+    user: "{{ item.username }}"
+    password: "{{ item.username }}"
+    vhost: /
+    tags: "{{ item.tags }}"
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+  with_items:
+  - { username: {{username}}, password: {{userpassword}}, tags: {{usertags}}}
+  tags: 
+  - deploy
+  - new-user
+
+- name: Setup queue
+  rabbitmq_queue:
+    name: "{{item.queuename}}"
+    login_host: 127.0.0.1
+    login_user: "{{item.username}}"
+    login_password: "{{item.password}}"
+    login_port: "{{item.port}}"
+  with_items:
+  - { queuename: {{qname}}, qusername: {{qusername}}, qpassword: {{qpass}}, qport: {{qport}}}
+  tags: 
+  - deploy
+  - new-queue
+
+- name: Remove the default user
+  rabbitmq_user: 
+    name: guest 
+    state: absent
+  tags: deploy
+    
