@@ -20,8 +20,6 @@
   rabbitmq_plugin:
     names: rabbitmq_management
     state: enabled
-  notify:
-    - restart rabbitmq
   tags: 
   - deploy
 
