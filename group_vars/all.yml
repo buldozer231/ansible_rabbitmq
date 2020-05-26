@@ -5,4 +5,4 @@ qname: qname
 qusername: quser
 qpassword: qpass
 qport: qport
-install_item: git
+install: git
