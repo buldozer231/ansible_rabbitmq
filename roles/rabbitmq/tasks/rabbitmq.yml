@@ -30,13 +30,12 @@
     user: "{{ item.username }}"
     password: "{{ item.username }}"
     vhost: /
-    tags: "{{ item.tags }}"
     configure_priv: .*
     read_priv: .*
     write_priv: .*
     state: present
   with_items:
-  - { username: "{{username}}", password: "{{userpassword}}", tags: "{{usertags}}"}
+  - { username: user, password: pass}
   tags: 
   - deploy
   - new-user
