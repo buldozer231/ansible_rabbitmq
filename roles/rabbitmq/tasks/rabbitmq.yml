@@ -1,6 +1,6 @@
 
 - name: Add rabbit repo
-  shell: wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.1/rabbitmq-server-3.6.1-1.noarch.rpm
+  shell: wget https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.8.4/rabbitmq-server-3.8.4-1.el8.noarch.rpm
   tags: 
   - deploy
 
@@ -11,7 +11,7 @@
 
 - name: Install rabbitmq
   yum:
-   name: rabbitmq-server-3.6.1-1.noarch.rpm
+   name: rabbitmq-server-3.8.4-1.el8.noarch.rpm
    state: present
   tags: 
   - deploy
