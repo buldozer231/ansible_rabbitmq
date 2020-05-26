@@ -27,15 +27,14 @@
 
 - name: Add rabbitmq users admin
   rabbitmq_user:
-    user: "{{ item.username }}"
-    password: "{{ item.password }}"
+    user: username
+    password: password
     vhost: /
     configure_priv: .*
     read_priv: .*
     write_priv: .*
     state: present
-  with_items:
-  - { username: user, password: pass}
+  
   tags: 
   - deploy
   - new-user
