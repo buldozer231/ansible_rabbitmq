@@ -3,7 +3,9 @@
     url: http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
     dest: /tmp/erlang.rpm      
 - name: Rpm add Erlang
-  shell: yum install /tmp/erlang.rpm -y
+  yum:
+   install: /tmp/erlang.rpm
+  
 
 - name: Base setup
   package: 
