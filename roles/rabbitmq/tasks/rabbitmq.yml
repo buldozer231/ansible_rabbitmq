@@ -34,7 +34,7 @@
     write_priv: .*
     state: present
   with_items:
-  - "{ username: {{username}}, password: {{userpassword}}, tags: {{usertags}}}"
+  - { username: "{{username}}", password: "{{userpassword}}", tags: "{{usertags}}"}
   tags: 
   - deploy
   - new-user
@@ -47,7 +47,7 @@
     login_password: "{{item.password}}"
     login_port: "{{item.port}}"
   with_items:
-  - "{ queuename: {{qname}}, qusername: {{qusername}}, qpassword: {{qpass}}, qport: {{qport}}}"
+  - { queuename: "{{qname}}", qusername: "{{qusername}}", qpassword: "{{qpass}}", qport: "{{qport}}"}
   tags: 
   - deploy
   - new-queue
