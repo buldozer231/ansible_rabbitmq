@@ -2,6 +2,7 @@
   get_url:
     url: http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
     dest: /tmp/erlang.rpm      
+- name: Rpm add Erlang
   shell: rpm -Uvh /tmp/erlang.rpm
 
 - name: Base setup
