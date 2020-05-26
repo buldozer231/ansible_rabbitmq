@@ -10,7 +10,7 @@
   - deploy
 
 - name: Install rabbitmq
-  shell: yum install rabbitmq-server-3.6.1-1.noarch.rpm
+  shell: yum install rabbitmq-server-3.6.1-1.noarch.rpm -y
   tags: 
   - deploy
 
